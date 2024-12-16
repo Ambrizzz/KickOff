@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #E4E4E5;
+    background-color: #e4e2dd;
     color: #3C3C3C;
   }
 
@@ -21,9 +21,8 @@ body {
     width: 150px; /* Ajusta el tamaño del logo */
     height: 150px;
   }
-  
 
-h2 {
+  h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #545454;
@@ -138,9 +137,9 @@ h2 {
     grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
     gap: 15px; /* Espacio entre filas y columnas */
     padding: 10px;
-}
-/* Animación para desvanecer (fade-out) */
-.fade-out {
+  }
+  /* Animación para desvanecer (fade-out) */
+  .fade-out {
     animation: fadeOut 0.3s forwards; /* Desvanecer */
   }
   
@@ -177,7 +176,7 @@ h2 {
   /* Score Card */
   .score-card {
     border: 1px solid #BEBEBE;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 10px;
     margin-bottom: 20px;
     background-color: #E4E4E5;
@@ -194,8 +193,8 @@ h2 {
   }
   
   .completed {
-    background-color: #ffe8e8;
-    color: #3C3C3C;
+    background-color: #e8fcffa8;
+    color: #E4E4E5;
   }
   
   .match {
@@ -207,13 +206,13 @@ h2 {
   .team {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #545454;
+    color: #585858dc;
   }
   
   .team-score {
     font-size: 1rem;
     font-weight: bold;
-    color: #464646;
+    color: #585858dc;
   }
   
   .status {
@@ -221,44 +220,7 @@ h2 {
     color: #7A7A7A;
     text-align: center;
   }
-  
-  /* Modal Styles */
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal.hidden {
-    display: none;
-  }
-  
-  .modal-content {
-    background-color: #E4E4E5;
-    padding: 20px;
-    border-radius: 5px;
-    width: 500px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    color: #3C3C3C;
-  }
-  
-  .close-modal {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #7A7A7A;
-  }
-  
+
   .nav-arrow {
     cursor: pointer;
     font-size: 1.5rem;
@@ -277,18 +239,18 @@ h2 {
     vertical-align: middle;
   }
   
-.upcoming .status {
+  .upcoming .status {
   font-size: 0.9rem;
   color: #555;
   margin-top: 10px;
   text-align: center;
-}
+  }
 
-.upcoming .status div {
+  .upcoming .status div {
   margin-bottom: 5px; /* Separar la fecha y la hora */
-}
+  }
   
-.winner {
+  .winner {
     font-weight: bold;
     color: #08be30; /* Azul llamativo */
     background-color: #e8ffec; /* Fondo claro */
