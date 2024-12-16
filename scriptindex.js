@@ -103,14 +103,14 @@
   ];
 
   const week16Teams = [
-  ["Chargers", "Broncos", 0, 0, "upcoming", "Q1", "Jue, Dic 19", "7:15 PM"],
-  ["Chiefs", "Texans", 0, 0, "upcoming", "Q1", "Sab, Dic 21", "12:00 PM"],
-  ["Ravens", "Steelers", 0, 0, "upcoming", "Q1", "Sab, Dic 21", "3:30 PM"],
-  ["Bills", "Patriots", 0, 0, "upcoming", "Q1", "Dom, Dic 22", "12:00 PM"],
-  ["Falcons", "Giants", 0, 0, "upcoming", "Q1", "Dom, Dic 22", "12:00 PM"],
-  ["Bears", "Lions", 0, 0, "upcoming", "Q1", "Dom, Dic 22", "12:00 PM"],
-  ["Panthers", "Cardinals", 0, 0, "upcoming", "Q1", "Dom, Dic 22", "12:00 PM"],
-  ["Jets", "Rams", 0, 0, "upcoming", "Q1", "Dom, Dic 22", "12:00 PM"],
+  ["Chargers", "Broncos", 0, 0, "upcoming", "Q1", "Thu, Dec 19", "7:15 PM"],
+  ["Chiefs", "Texans", 0, 0, "upcoming", "Q1", "Sat, Dec 21", "12:00 PM"],
+  ["Ravens", "Steelers", 0, 0, "upcoming", "Q1", "Sat, Dec 21", "3:30 PM"],
+  ["Bills", "Patriots", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
+  ["Falcons", "Giants", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
+  ["Bears", "Lions", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
+  ["Panthers", "Cardinals", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
+  ["Jets", "Rams", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
   ["Commanders", "Eagles", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
   ["Bengals", "Browns", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
   ["Colts", "Titans", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
