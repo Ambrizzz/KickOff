@@ -12,28 +12,17 @@
     <div class="header">
         <img src="img/KO (1).png" alt="Logo" class="header-logo">
     </div>
+    
     <!-- Navegación entre semanas -->
-    <h2>
+      <h2>
         <span class="nav-arrow left" id="week-prev">&lt;</span>
-        Week <span id="week-number">12</span>
+        Week <span id="week-number"></span>
         <span class="nav-arrow right" id="week-next">&gt;</span>
       </h2>
   
-      <!-- Contenedor de partidos dinámicos -->
-      <div id="matches-container">
-        <!-- Partidos se generarán dinámicamente aquí -->
-      </div>
-    </div>
-
-  <!-- Modal para noticias -->
-  <div id="news-modal" class="modal hidden">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <h2 id="modal-title">Título de la noticia</h2>
-      <p id="modal-body">Contenido detallado de la noticia</p>
-    </div>
+        <!-- Contenedor de partidos dinámicos -->
+        <div id="matches-container"></div>
   </div>
-
   <script src="scriptindex.js"></script>
 </body>
 </html>
