@@ -1,60 +1,151 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const carousel = document.querySelector(".news-carousel");
-    
-    // Navegación con botones
-    const leftButton = document.querySelector(".carousel-nav.left");
-    const rightButton = document.querySelector(".carousel-nav.right");
-  
-    leftButton.addEventListener("click", () => {
-      carousel.scrollLeft -= 300; // Ajusta la cantidad de desplazamiento
-    });
-  
-    rightButton.addEventListener("click", () => {
-      carousel.scrollLeft += 300; // Ajusta la cantidad de desplazamiento
-    });
-  });
-// Array con las semanas y los partidos
-const weeks = [
-    { week: 15, matches: [
-        { team1: "49ers", score1: 6, score2: 12, team2: "Rams", status: "Final", Live: false },
-        { team1: "Saints", score1: 19, score2: 20, team2: "Commanders", status: "Final"},
-        { team1: "Browns", score1: 7, score2: 21, team2: "Chiefs", status: "Final"},
-        { team1: "Titans", score1: 27, score2: 37, team2: "Bengals", status: "Final"},
-        { team1: "Texans", score1: 20, score2: 12, team2: "Dolphins", status: "Final"},
-        { team1: "Giants", score1: 14, score2: 35, team2: "Ravens", status: "Final"},
-        { team1: "Jaguars", score1: 25, score2: 32, team2: "Jets", status: "Final"},
-        { team1: "Panthers", score1: 14, score2: 30, team2: "Cowboys", status: "Final"},
-        { team1: "Chargers", score1: 17, score2: 37, team2: "Buccaneers", status: "Live", quarter: "Q4"},
-        { team1: "Broncos", score1: 24, score2: 13, team2: "Colts", status: "Live", quarter: "Q4"},
-        { team1: "Cardinals", score1: 30, score2: 10, team2: "Patriots", status: "Live", quarter: "Q4"},
-        { team1: "Lions", score1: 21, score2: 28, team2: "Bills", status: "Live", quarter: "Q3"},
-        { team1: "Eagles", score1: 27, score2: 13, team2: "Steelers", status: "Live", quarter: "Q4"},
-        { team1: "Seahawks", score1: 0, score2: 0, team2: "Packers", status: "upcoming", quarter: "Q1", startTime: "Today", startTimeHour: "7:20 PM"},
-        { team1: "Vikings", score1: 0, score2: 0, team2: "Bears", status: "upcoming", quarter: "Q1", startTime: "Tomorrow", startTimeHour: "7:00 PM"},
-        { team1: "Raiders", score1: 0, score2: 0, team2: "Falcons", status: "upcoming", quarter: "Q1", startTime: "Tomorrow", startTimeHour: "7:30 PM"}
-      ]
-    },
-    { week: 16, matches: [
-        { team1: "Chargers", score1: 6, score2: 12, team2: "Broncos", status: "upcoming", quarter: "Q3", startTime: "Jue, Dic 19", startTimeHour: "7:15 PM" },
-        { team1: "Chiefs", score1: 0, score2: 0, team2: "Texans", status: "upcoming", quarter: "Q3", startTime: "Sab, Dic 21", startTimeHour: "12:00 PM"},
-        { team1: "Ravens", score1: 0, score2: 0, team2: "Steelers", status: "upcoming", quarter: "Q3", startTime: "Sab, Dic 21", startTimeHour: "3:30 PM"},
-        { team1: "Bills", score1: 0, score2: 0, team2: "Patriots", status: "upcoming", quarter: "Q3", startTime: "Dom, Dic 22", startTimeHour: "12:00 PM"},
-        { team1: "Falcons", score1: 0, score2: 0, team2: "Giants", status: "upcoming", quarter: "Q3", startTime: "Dom, Dic 22", startTimeHour: "12:00 PM"},
-        { team1: "Bears", score1: 0, score2: 0, team2: "Lions", status: "upcoming", quarter: "Q3", startTime: "Dom, Dic 22", startTimeHour: "12:00 PM"},
-        { team1: "Panthers", score1: 0, score2: 0, team2: "Cardinals", status: "upcoming", quarter: "Q3", startTime: "Dom, Dic 22", startTimeHour: "12:00 PM"},
-        { team1: "Jets", score1: 0, score2: 0, team2: "Rams", status: "upcoming", quarter: "Q3", startTime: "Dom, Dic 22", startTimeHour: "12:00 PM"},
-        { team1: "Commanders", score1: 0, score2: 0, team2: "Eagles", status: "upcoming", quarter: "Q3", startTime: "Sun, Dec 22", startTimeHour: "12:00 PM"},
-        { team1: "Bengals", score1: 0, score2: 0, team2: "Browns", status: "upcoming", quarter: "Q3", startTime: "Sun, Dec 22", startTimeHour: "12:00 PM"},
-        { team1: "Colts", score1: 0, score2: 0, team2: "Titans", status: "upcoming", quarter: "Q3", startTime: "Sun, Dec 22", startTimeHour: "12:00 PM"},
-        { team1: "Seahawks", score1: 0, score2: 0, team2: "Vikings", status: "upcoming", quarter: "Q3", startTime: "Sun, Dec 22", startTimeHour: "3:05 PM"},
-        { team1: "Raiders", score1: 0, score2: 0, team2: "Jaguars", status: "upcoming", quarter: "Q3", startTime: "Sun, Dec 22", startTimeHour: "3:25 PM"},
-        { team1: "Dolphins", score1: 0, score2: 0, team2: "49ers", status: "upcoming", quarter: "Q3", startTime: "Sun, Dec 15", startTimeHour: "3:25 PM"},
-        { team1: "Cowboys", score1: 0, score2: 0, team2: "Buccaneers", status: "upcoming", quarter: "Q3", startTime: "Sun, Dec 22", startTimeHour: "7:20 PM"},
-        { team1: "Packers", score1: 0, score2: 0, team2: "Saints", status: "upcoming", quarter: "Q3", startTime: "Mon, Dec 23", startTimeHour: "7:15 PM"}
-      ]
-    }
+  const week10Teams = [
+    ['Ravens', 'Bengals', 35, 34, 'Final'],
+    ['Panthers', 'Giants', 20, 17, 'Final'],
+    ['Chiefs', 'Broncos', 16, 14, 'Final'],
+    ['Colts', 'Bills', 20, 30, 'Final'],
+    ['Commanders', 'Steelers', 27, 28, 'Final'],
+    ['Jaguars', 'Vikings', 7, 12, 'Final'],
+    ['Saints', 'Falcons', 20, 17, 'Final'],
+    ['Bears', 'Patriots', 3, 19, 'Final'],
+    ['Buccaneers', '49ers', 20, 23, 'Final'],
+    ['Chargers', 'Titans', 27, 17, 'Final'],
+    ['Cardinals', 'Jets', 31, 6, 'Final'],
+    ['Cowboys', 'Eagles', 6, 34, 'Final'],
+    ['Texans', 'Lions', 23, 26, 'Final'],
+    ['Rams', 'Dolphins', 15, 23, 'Final'],
   ];
   
+  const week11Teams = [
+    ['Eagles', 'Commanders', 26, 18, 'Final'],
+    ['Dolphins', 'Raiders', 34, 19, 'Final'],
+    ['Saints', 'Browns', 35, 14, 'Final'],
+    ['Jets', 'Colts', 27, 28, 'Final'],
+    ['Titans', 'Vikings', 13, 23, 'Final'],
+    ['Bears', 'Packers', 19, 20, 'Final'],
+    ['Lions', 'Jaguars', 52, 6, 'Final'],
+    ['Patriots', 'Rams', 22, 28, 'Final'],
+    ['Steelers', 'Ravens', 18, 16, 'Final'],
+    ['49ers', 'Seahawks', 17, 20, 'Final'],
+    ['Broncos', 'Falcons', 38, 6, 'Final'],
+    ['Bills', 'Chiefs', 30, 21, 'Final'],
+    ['Chargers', 'Bengals', 34, 27, 'Final'],
+    ['Cowboys', 'Texans', 10, 34, 'Final'],
+  ];
+  
+  const week12Teams = [
+    ['Browns', 'Steelers', 24, 19, 'Final'],
+    ['Texans', 'Titans', 27, 32, 'Final'],
+    ['Bears', 'Vikings', 27, 30, 'Final'],
+    ['Commanders', 'Cowboys', 26, 34, 'Final'],
+    ['Dolphins', 'Patriots', 34, 15, 'Final'],
+    ['Panthers', 'Chiefs', 27, 30, 'Final'],
+    ['Giants', 'Buccaneers', 7, 30, 'Final'],
+    ['Colts', 'Lions', 6, 24, 'Final'],
+    ['Raiders', 'Broncos', 19, 29, 'Final'],
+    ['Seahawks', 'Cardinals', 16, 6, 'Final'],
+    ['Packers', '49ers', 38, 10, 'Final'],
+    ['Rams', 'Eagles', 20, 37, 'Final'],
+    ['Chargers', 'Ravens', 23, 30, 'Final'],
+  ];
+
+  const week13Teams = [
+    ['Lions', 'Bears', 23, 20, 'Final'],
+    ["Cowboys", "Giants", 27, 20, "Final"],
+    ["Packers", "Dolphins", 30, 17, "Final"],
+    ["Chiefs", "Raiders", 19, 17, "Final"],
+    ["Jaguars", "Texans", 20, 23, "Final"],
+    ["Patriots", "Colts", 24, 25, "Final"],
+    ["Falcons", "Chargers", 13, 17, "Final"],
+    ["Jets", "Seahawks", 21, 26, "Final"],
+    ["Commanders", "Titans", 42, 19, "Final"],
+    ["Bengals", "Steelers", 38, 44, "Final"],
+    ["Vikings", "Cardinals", 23, 22, "Final"],
+    ["Saints", "Rams", 14, 21, "Final"],
+    ["Panthers", "Buccaneers", 23, 26, "Final"],
+    ["Ravens", "Eagles", 19, 24, "Final"],
+    ["Bills", "49ers", 35, 10, "Final"],
+    ["Broncos", "Browns", 41, 32, "Final"],
+  ];
+
+  const week14Teams = [
+    ['Lions', 'Packers', 34, 31, 'Final'],
+    ["Steelers", "Browns", 27, 14, "Final"],
+    ["Giants", "Saints", 11, 14, "Final"],
+    ["Dolphins", "Jets", 32, 26, "Final"],
+    ["Titans", "Jaguars", 10, 6, "Final"],
+    ["Vikings", "Falcons", 42, 21, "Final"],
+    ["Eagles", "Panthers", 22, 16, "Final"],
+    ["Buccaneers", "Raiders", 28, 13, "Final"],
+    ["Cardinals", "Seahawks", 18, 30, "Final"],
+    ["49ers", "Bears", 38, 13, "Final"],
+    ["Rams", "Bills", 44, 42, "Final"],
+    ["Chiefs", "Chargers", 19, 17, "Final"],
+    ["Cowboys", "Bengals", 20, 27, "Final"],
+  ];
+
+  const week15Teams = [
+  ["49ers", "Rams", 6, 12, "Final"],
+  ["Saints", "Commanders", 19, 20, "Final"],
+  ["Browns", "Chiefs", 7, 21, "Final"],
+  ["Titans", "Bengals", 27, 37, "Final"],
+  ["Texans", "Dolphins", 20, 12, "Final"],
+  ["Giants", "Ravens", 14, 35, "Final"],
+  ["Jaguars", "Jets", 25, 32, "Final"],
+  ["Panthers", "Cowboys", 14, 30, "Final"],
+  ["Chargers", "Buccaneers", 17, 40, "Final"],
+  ["Broncos", "Colts", 31, 13, "Final"],
+  ["Cardinals", "Patriots", 30, 17, "Final"],
+  ["Lions", "Bills", 42, 48, "Final"],
+  ["Eagles", "Steelers", 27, 13, "Final"],
+  ["Seahawks", "Packers", 13, 23, 'Live', "Q4"],
+  ["Vikings", "Bears", 0, 0, "upcoming", "Q1", "Tomorrow", "7:00 PM"],
+  ["Raiders", "Falcons", 0, 0, "upcoming", "Q1", "Tomorrow", "7:30 PM"],
+  ];
+
+  const week16Teams = [
+  ["Chargers", "Broncos", 0, 0, "upcoming", "Q1", "Jue, Dic 19", "7:15 PM"],
+  ["Chiefs", "Texans", 0, 0, "upcoming", "Q1", "Sab, Dic 21", "12:00 PM"],
+  ["Ravens", "Steelers", 0, 0, "upcoming", "Q1", "Sab, Dic 21", "3:30 PM"],
+  ["Bills", "Patriots", 0, 0, "upcoming", "Q1", "Dom, Dic 22", "12:00 PM"],
+  ["Falcons", "Giants", 0, 0, "upcoming", "Q1", "Dom, Dic 22", "12:00 PM"],
+  ["Bears", "Lions", 0, 0, "upcoming", "Q1", "Dom, Dic 22", "12:00 PM"],
+  ["Panthers", "Cardinals", 0, 0, "upcoming", "Q1", "Dom, Dic 22", "12:00 PM"],
+  ["Jets", "Rams", 0, 0, "upcoming", "Q1", "Dom, Dic 22", "12:00 PM"],
+  ["Commanders", "Eagles", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
+  ["Bengals", "Browns", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
+  ["Colts", "Titans", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
+  ["Seahawks", "Vikings", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "3:05 PM"],
+  ["Raiders", "Jaguars", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "3:25 PM"],
+  ["Dolphins", "49ers", 0, 0, "upcoming", "Q1", "Sun, Dec 15", "3:25 PM"],
+  ["Cowboys", "Buccaneers", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "7:20 PM"],
+  ["Packers", "Saints", 0, 0, "upcoming", "Q1", "Mon, Dec 23", "7:15 PM"],
+];
+
+// Función para generar partidos personalizados
+function generateMatches(teams) {
+  return teams.map(([team1, team2, score1, score2, status, quarter, startTime, startTimeHour]) => ({
+    team1,
+    team2,
+    score1,
+    score2,
+    status,
+    quarter: quarter || null, // Solo se incluye si está presente
+    startTime: startTime || null,
+    startTimeHour: startTimeHour || null,
+  }));
+}
+
+// Lista de semanas
+const weeks = [
+  { week: 10, matches: generateMatches(week10Teams) },
+  { week: 11, matches: generateMatches(week11Teams) },
+  { week: 12, matches: generateMatches(week12Teams) },
+  { week: 13, matches: generateMatches(week13Teams) },
+  { week: 14, matches: generateMatches(week14Teams) },
+  { week: 15, matches: generateMatches(week15Teams) },
+  { week: 16, matches: generateMatches(week16Teams) },
+];
+ 
   // Logos de los equipos
   const teamLogos = {
     Buccaneers: "logos/buccaneers.png",
@@ -91,10 +182,33 @@ const weeks = [
     Raiders: "logos/raiders.png"
   };
   
-  // Variables de estado
-  let currentWeekIndex = 0;
-  const weekNumber = document.getElementById('week-number');
-  const matchesContainer = document.getElementById('matches-container');
+// Función para determinar la semana actual
+function getCurrentWeekIndex() {
+  const today = new Date(); // Fecha actual
+  const startDates = [
+    new Date("2024-11-05"), // Fecha de inicio de la semana 10
+    new Date("2024-11-12"), // Fecha de inicio de la semana 12
+    new Date("2024-11-19"), // Fecha de inicio de la semana 12
+    new Date("2024-11-26"), // Fecha de inicio de la semana 13
+    new Date("2024-12-03"), // Fecha de inicio de la semana 14
+    new Date("2024-12-10"), // Fecha de inicio de la semana 15
+    new Date("2024-12-17"), // Fecha de inicio de la semana 16
+  ];
+
+  // Buscar la semana actual comparando las fechas
+  for (let i = 0; i < startDates.length; i++) {
+    if (today >= startDates[i] && (i === startDates.length - 1 || today < startDates[i + 1])) {
+      return i; // Devuelve el índice de la semana actual
+    }
+  }
+
+  return 0; // Por defecto, si no coincide, regresa la primera semana
+}
+
+// Establecer la semana actual al cargar la página
+let currentWeekIndex = getCurrentWeekIndex(); // Calcula el índice de la semana actual
+const weekNumber = document.getElementById('week-number');
+const matchesContainer = document.getElementById('matches-container');
   
   function renderMatches() {
     // Asegúrate de que el contenedor existe
@@ -132,7 +246,7 @@ const weeks = [
   
         // Texto adicional para partidos en vivo
         const liveStatusHTML = match.status === "Live"
-          ? `<div>Live</div>
+          ? `<div>En vivo</div>
              <div>${match.quarter}</div>`
           : "";
   
@@ -199,6 +313,8 @@ const weeks = [
       renderMatches();
     }
   });
+  
+
   
   // Renderizar la semana inicial al cargar la página
   renderMatches();
