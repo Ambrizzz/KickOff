@@ -97,7 +97,7 @@
   ["Cardinals", "Patriots", 30, 17, "Final"],
   ["Lions", "Bills", 42, 48, "Final"],
   ["Eagles", "Steelers", 27, 13, "Final"],
-  ["Seahawks", "Packers", 13, 23, 'Live', "Q4"],
+  ["Seahawks", "Packers", 13, 30, 'Final'],
   ["Vikings", "Bears", 0, 0, "upcoming", "Q1", "Tomorrow", "7:00 PM"],
   ["Raiders", "Falcons", 0, 0, "upcoming", "Q1", "Tomorrow", "7:30 PM"],
   ];
