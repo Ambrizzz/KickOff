@@ -246,16 +246,14 @@ const matchesContainer = document.getElementById('matches-container');
   
         // Texto adicional para partidos en vivo
         const liveStatusHTML = match.status === "Live"
-          ? `<div>En vivo</div>
-             <div>${match.quarter}</div>`
+          ? `<div>En vivo - ${match.quarter}</div>`
           : "";
   
         // Formatear fecha y hora para partidos futuros
         const additionalStatusHTML = match.status === "upcoming"
           ? `
             <div>
-              <div>${match.startTime}</div>
-              <div>${match.startTimeHour}</div>
+              <div>${match.startTime} - ${match.startTimeHour}</div>
             </div>
           `
           : match.status;
