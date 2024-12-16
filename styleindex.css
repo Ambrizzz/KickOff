@@ -42,66 +42,6 @@ body {
     color: #3C3C3C;
   }
   
-  /* News Section */
-  .news-section {
-    margin-bottom: 40px;
-    position: relative;
-  }
-  
-  .news-section h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #545454;
-  }
-  
-  .news-carousel {
-    display: flex;
-    gap: 20px;
-    overflow: hidden;
-    scroll-behavior: smooth;
-    padding: 10px;
-  }
-  
-  .news-item {
-    flex: 0 0 auto;
-    width: 300px;
-    border: 1px solid #BEBEBE;
-    border-radius: 5px;
-    background-color: #E4E4E5;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    color: #3C3C3C;
-  }
-  
-  .news-item img {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-bottom: 1px solid #BEBEBE;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  }
-  
-  .news-item p {
-    padding: 10px;
-    font-size: 1rem;
-    color: #545454;
-  }
-  
-  .view-more {
-    background-color: #949494;
-    color: #E4E4E5;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .view-more:hover {
-    background-color: #7A7A7A;
-  }
-  
   /* Navigation Buttons */
   .carousel-nav {
     position: absolute;
@@ -133,10 +73,10 @@ body {
   }
 
   #matches-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
-    gap: 15px; /* Espacio entre filas y columnas */
-    padding: 10px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten a nuevas filas */
+    gap: 10px; /* Espaciado entre las tarjetas */
+    justify-content: center; /* Centrar los partidos */
   }
   /* Animación para desvanecer (fade-out) */
   .fade-out {
@@ -175,16 +115,22 @@ body {
   
   /* Score Card */
   .score-card {
+    flex: 1 1 calc(33.333% - 20px); /* Ocupa un tercio del ancho, con margen incluido */
+    max-width: calc(33.333% - 20px); /* Ancho máximo igual al tercio del contenedor */
+    min-width: 250px; /* Ancho mínimo para evitar que sean demasiado pequeñas */
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
     border: 1px solid #BEBEBE;
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 20px;
     background-color: #E4E4E5;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     color: #3C3C3C;
+    text-align: center;
   }
   
   .live-now {
@@ -238,6 +184,21 @@ body {
     height: 30px;
     vertical-align: middle;
   }
+
+  /* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .score-card {
+    flex: 1 1 calc(50% - 20px); /* En pantallas medianas, dos tarjetas por fila */
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .score-card {
+    flex: 1 1 100%; /* En pantallas pequeñas, una tarjeta por fila */
+    max-width: 100%;
+  }
+}
   
   .upcoming .status {
   font-size: 0.9rem;
