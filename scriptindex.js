@@ -186,13 +186,13 @@ const weeks = [
 function getCurrentWeekIndex() {
   const today = new Date(); // Fecha actual
   const startDates = [
-    new Date("2024-11-05"), // Fecha de inicio de la semana 10
-    new Date("2024-11-12"), // Fecha de inicio de la semana 12
-    new Date("2024-11-19"), // Fecha de inicio de la semana 12
-    new Date("2024-11-26"), // Fecha de inicio de la semana 13
-    new Date("2024-12-03"), // Fecha de inicio de la semana 14
-    new Date("2024-12-10"), // Fecha de inicio de la semana 15
-    new Date("2024-12-17"), // Fecha de inicio de la semana 16
+    new Date("2024-11-06"), // Fecha de inicio de la semana 10
+    new Date("2024-11-13"), // Fecha de inicio de la semana 12
+    new Date("2024-11-20"), // Fecha de inicio de la semana 12
+    new Date("2024-11-27"), // Fecha de inicio de la semana 13
+    new Date("2024-12-04"), // Fecha de inicio de la semana 14
+    new Date("2024-12-11"), // Fecha de inicio de la semana 15
+    new Date("2024-12-18"), // Fecha de inicio de la semana 16
   ];
 
   // Buscar la semana actual comparando las fechas
