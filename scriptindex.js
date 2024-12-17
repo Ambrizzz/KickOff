@@ -98,8 +98,8 @@
   ["Lions", "Bills", 42, 48, "Final"],
   ["Eagles", "Steelers", 27, 13, "Final"],
   ["Seahawks", "Packers", 13, 30, 'Final'],
-  ["Vikings", "Bears", 0, 0, "upcoming", "Q1", "Today", "7:00 PM"],
-  ["Raiders", "Falcons", 0, 0, "upcoming", "Q1", "Today", "7:30 PM"],
+  ["Vikings", "Bears", 27, 6, "Live", "Q4",
+  ["Raiders", "Falcons", 3, 15, "Live", "Q4"],
   ];
 
   const week16Teams = [
