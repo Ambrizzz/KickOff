@@ -98,7 +98,7 @@
   ["Lions", "Bills", 42, 48, "Final"],
   ["Eagles", "Steelers", 27, 13, "Final"],
   ["Seahawks", "Packers", 13, 30, 'Final'],
-  ["Vikings", "Bears", 27, 12, "Live", "Q4"],
+  ["Vikings", "Bears", 30, 12, "Live", "Q4"],
   ["Raiders", "Falcons", 9, 15, "Live", "Q4"],
   ];
 
