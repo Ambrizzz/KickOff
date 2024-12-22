@@ -98,38 +98,39 @@
   ["Lions", "Bills", 42, 48, "Final"],
   ["Eagles", "Steelers", 27, 13, "Final"],
   ["Seahawks", "Packers", 13, 30, 'Final'],
-  ["Vikings", "Bears", 30, 12, "Final"],
-  ["Raiders", "Falcons", 9, 15, "Final"],
+  ["Vikings", "Bears", 27, 12, "Final"],
+  ["Raiders", "Falcons", 3, 15, "Final"],
   ];
 
   const week16Teams = [
-  ["Chargers", "Broncos", 0, 0, "upcoming", "Q1", "Thu, Dec 19", "7:15 PM"],
-  ["Chiefs", "Texans", 0, 0, "upcoming", "Q1", "Sat, Dec 21", "12:00 PM"],
-  ["Ravens", "Steelers", 0, 0, "upcoming", "Q1", "Sat, Dec 21", "3:30 PM"],
-  ["Bills", "Patriots", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
-  ["Falcons", "Giants", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
-  ["Bears", "Lions", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
-  ["Panthers", "Cardinals", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
-  ["Jets", "Rams", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
-  ["Commanders", "Eagles", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
-  ["Bengals", "Browns", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
-  ["Colts", "Titans", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "12:00 PM"],
-  ["Seahawks", "Vikings", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "3:05 PM"],
-  ["Raiders", "Jaguars", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "3:25 PM"],
-  ["Dolphins", "49ers", 0, 0, "upcoming", "Q1", "Sun, Dec 15", "3:25 PM"],
-  ["Cowboys", "Buccaneers", 0, 0, "upcoming", "Q1", "Sun, Dec 22", "7:20 PM"],
-  ["Packers", "Saints", 0, 0, "upcoming", "Q1", "Mon, Dec 23", "7:15 PM"],
+  ["Chargers", "Broncos", 34, 27, "Final"],
+  ["Chiefs", "Texans", 27, 19, "Final"],
+  ["Ravens", "Steelers", 34, 17, "Final"],
+  ["Falcons", "Giants", 34, 7, "Final"],
+  ["Bears", "Lions", 17, 34, "Final"],
+  ["Panthers", "Cardinals", 36, 30, "Final"],
+  ["Jets", "Rams", 9, 19, "Final"],
+  ["Commanders", "Eagles", 36, 33, "Final"],
+  ["Bengals", "Browns", 24, 6, "Final"],
+  ["Colts", "Titans", 38, 30, "Final"],
+  ["Seahawks", "Vikings", 17, 20, "Live", "Q3", 2],
+  ["Bills", "Patriots", 7, 14, "Live", "Q3", 1],
+  ["Raiders", "Jaguars", 13, 7, "Live", "Halftime", 2],
+  ["Dolphins", "49ers", 13, 10, "Live", "Halftime", 2],
+  ["Cowboys", "Buccaneers", 0, 0, "upcoming", "Q1", 1,"Today", "7:20 PM"],
+  ["Packers", "Saints", 0, 0, "upcoming", "Q1", 1, "Tomorrow", "7:15 PM"],
 ];
 
 // Función para generar partidos personalizados
 function generateMatches(teams) {
-  return teams.map(([team1, team2, score1, score2, status, quarter, startTime, startTimeHour]) => ({
+  return teams.map(([team1, team2, score1, score2, status, quarter, possession, startTime, startTimeHour]) => ({
     team1,
     team2,
     score1,
     score2,
     status,
-    quarter: quarter || null, // Solo se incluye si está presente
+    quarter: quarter || null,
+    possession: possession || null, 
     startTime: startTime || null,
     startTimeHour: startTimeHour || null,
   }));
@@ -243,10 +244,14 @@ const matchesContainer = document.getElementById('matches-container');
         const team2IsWinner = match.status === "Final" && match.score2 > match.score1;
         const team1IsLeading = match.status === "Live" && match.score1 > match.score2;
         const team2IsLeading = match.status === "Live" && match.score2 > match.score1;
+
+        // Posesión
+        const team1HasPossession = match.possession === match.team1;
+        const team2HasPossession = match.possession === match.team2;
   
         // Texto adicional para partidos en vivo
         const liveStatusHTML = match.status === "Live"
-          ? `<div>En vivo - ${match.quarter}</div>`
+          ? `<div>Live - ${match.quarter}</div>`
           : "";
   
         // Formatear fecha y hora para partidos futuros
@@ -260,22 +265,25 @@ const matchesContainer = document.getElementById('matches-container');
   
         // Crear el contenido dinámico del partido
         matchDiv.innerHTML = `
-          <div class="match">
-            <div class="team ${team1IsWinner ? 'winner' : ''} ${team1IsLeading ? 'leading' : ''}">
-              <img src="${teamLogos[match.team1]}" alt="${match.team1} logo" class="team-logo">
-              ${match.team1}
-            </div>
-            <div class="team-score">${match.status === "upcoming" ? "-" : match.score1}</div>
-            <div class="team-score">${match.status === "upcoming" ? "-" : match.score2}</div>
-            <div class="team ${team2IsWinner ? 'winner' : ''} ${team2IsLeading ? 'leading' : ''}">
-              <img src="${teamLogos[match.team2]}" alt="${match.team2} logo" class="team-logo">
-              ${match.team2}
-            </div>
+        <div class="match">
+          <div class="team ${team1IsWinner ? 'winner' : ''} ${team1IsLeading ? 'leading' : ''}">
+            <img src="${teamLogos[match.team1]}" alt="${match.team1} logo" class="team-logo">
+            ${match.team1}
+            ${match.status === "Live" && match.possession === 1 ? '<div class="possession"></div>' : ''}
           </div>
-          <div class="status">${liveStatusHTML || additionalStatusHTML}</div>
-        `;
-        matchesContainer.appendChild(matchDiv);
-      });
+          <div class="team-score">${match.status === "upcoming" ? "-" : match.score1}</div>
+          <div class="team-score">${match.status === "upcoming" ? "-" : match.score2}</div>
+          <div class="team ${team2IsWinner ? 'winner' : ''} ${team2IsLeading ? 'leading' : ''}">
+            <img src="${teamLogos[match.team2]}" alt="${match.team2} logo" class="team-logo">
+            ${match.team2}
+            ${match.status === "Live" && match.possession === 2 ? '<div class="possession"></div>' : ''}
+          </div>
+        </div>
+        <div class="status">${liveStatusHTML || additionalStatusHTML}</div>
+      `;
+      
+  matchesContainer.appendChild(matchDiv);
+});
   
       // Cambiar a la animación "fade-in" después de actualizar el contenido
       matchesContainer.classList.remove('fade-out');
