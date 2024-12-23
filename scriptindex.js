@@ -117,7 +117,7 @@
   ["Bills", "Patriots", 24, 21, "Final"],
   ["Raiders", "Jaguars", 19, 14, "Final"],
   ["Dolphins", "49ers", 29, 17, "Final"],
-  ["Cowboys", "Buccaneers", 0, 0, "upcoming", "Q1", 1,"Today", "7:20 PM"],
+  ["Cowboys", "Buccaneers", 24, 26, "Live", "Q4 - 2 Minutes", 2],
   ["Packers", "Saints", 0, 0, "upcoming", "Q1", 1, "Tomorrow", "7:15 PM"],
 ];
 
