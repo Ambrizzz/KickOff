@@ -116,7 +116,7 @@
   ["Seahawks", "Vikings", 24, 27, "Live", "Q4", 2],
   ["Bills", "Patriots", 14, 24, "Live", "Q4", 2],
   ["Raiders", "Jaguars", 13, 14, "Live", "Q4", 1],
-  ["Dolphins", "49ers", 19, 10, "Live", "Q4", 2],
+  ["Dolphins", "49ers", 19, 10, "Live", "Q4", 1],
   ["Cowboys", "Buccaneers", 0, 0, "upcoming", "Q1", 1,"Today", "7:20 PM"],
   ["Packers", "Saints", 0, 0, "upcoming", "Q1", 1, "Tomorrow", "7:15 PM"],
 ];
