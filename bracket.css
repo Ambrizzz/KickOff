@@ -1,0 +1,123 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #242424;
+  color: #3C3C3C;
+}
+
+.header {
+  display: flex; /* Alinea los elementos horizontalmente */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Alinea el logo y texto verticalmente */
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #3C3C3C;
+}
+
+.header-logo {
+  width: 150px; /* Ajusta el tamaño del logo */
+  height: 150px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ddddddd8;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #3C3C3C;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #242424;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-menu ul li {
+  display: inline;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  color: #ddddddd8;
+  padding: 10px 15px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+  background-color: #545454;
+  border-radius: 5px;
+}
+
+.playoff-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.playoff-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px #ffffff1a;
+}
+
+/* Scrollbar principal */
+::-webkit-scrollbar {
+  width: 10px; /* Ancho del scrollbar */
+  height: 10px; /* Altura para barras horizontales */
+}
+
+/* Fondo de la barra */
+::-webkit-scrollbar-track {
+  background: #2a2a2a; /* Color de fondo */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Barra desplazable */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #5a5a5a, #8a8a8a); /* Degradado para la barra */
+  border-radius: 10px; /* Bordes redondeados */
+  border: 2px solid #2a2a2a; /* Borde para separar la barra del fondo */
+}
+
+/* Hover sobre la barra */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #8a8a8a, #bdbdbd); /* Cambio de color al pasar el mouse */
+}
+
+/* Scrollbar para navegadores que no usan WebKit */
+body {
+  scrollbar-color: #8a8a8a #2a2a2a; /* Color barra y fondo */
+  scrollbar-width: thin; /* Ancho más delgado */
+}

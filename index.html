@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="description" content="NFL Games Data"/> 
   <title>KickOff</title>
-  <link rel="stylesheet" href="styleindex.css">
+  <link rel="stylesheet" href="index.css">
   <link rel="icon" type="image/jpg" href="img/KO_Black.png"/>
+  <script src="security.js"></script>
 </head>
 <body>
   <div class="container">
@@ -14,6 +15,14 @@
         <img src="img/KO_Black (1).png" alt="Logo" class="header-logo">
     </div>
 <main></main>    
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="index.html">Matches</a></li>
+      <li><a href="standings.html">Standings</a></li>
+      <li><a href="bracket.html">Playoff Bracket</a></li>
+    </ul>
+  </nav>
+
     <!-- Navegación entre semanas -->
       <h2>
         <span class="nav-arrow left" id="week-prev">&lt;</span>
@@ -23,7 +32,7 @@
   
         <!-- Contenedor de partidos dinámicos -->
         <div id="matches-container"></div>
-  </div>
-  <script src="scriptindex.js"></script>
+    </div>
+    <script src="scriptindex.js"></script>
 </body>
 </html>

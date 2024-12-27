@@ -1,4 +1,4 @@
-  const week10Teams = [
+ const week10Teams = [
     ['Ravens', 'Bengals', 35, 34, 'Final'],
     ['Panthers', 'Giants', 20, 17, 'Final'],
     ['Chiefs', 'Broncos', 16, 14, 'Final'],
@@ -124,7 +124,7 @@
   const week17Teams = [
   ["Steelers", "Chiefs", 10, 29, "Final"],
   ["Texans", "Ravens", 2, 31, "Final"],
-  ["Bears", "Seahawks", 3, 6, "Final"],
+  ["Bears", "Seahawks", 3, 10, "Final"],
   ["Patriots", "Chargers", 0, 0, "upcoming", "Q1", 1, "Sat, Dec 28", "12:00 PM"],
   ["Bengals", "Broncos", 0, 0, "upcoming", "Q1", 1, "Sat, Dec 28", "3:30 PM"],
   ["Rams", "Cardinals", 0, 0, "upcoming", "Q1", 1, "Sat, Dec 28", "7:10 PM"],
@@ -138,6 +138,25 @@
   ["Vikings", "Packers", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "3:25 PM"],
   ["Commanders", "Falcons", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "7:20 PM"],
   ["49ers", "Lions", 0, 0, "upcoming", "Q1", 1, "Mon, Dec 30", "7:15 PM"],
+  ];
+
+  const week18Teams = [
+  ["Ravens", "Browns", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Raiders", "Chargers", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Steelers", "Bengals", 3, 8, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Cardinals", "49ers", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Falcons", "Panthers", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Broncos", "Chiefs", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Rams", "Seahawks", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Titans", "Texans", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Eagles", "Giants", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Colts", "Jaguars", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Lions", "Vikings", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Cowboys", "Commanders", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Packers", "Bears", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Jets", "Dolphins", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Buccaneers", "Saints", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
+  ["Patriots", "Bills", 0, 0, "upcoming", "Q1", 1, "TBD", "TBD"],
   ];
 
 // Función para generar partidos personalizados
@@ -165,6 +184,7 @@ const weeks = [
   { week: 15, matches: generateMatches(week15Teams) },
   { week: 16, matches: generateMatches(week16Teams) },
   { week: 17, matches: generateMatches(week17Teams) },
+  { week: 18, matches: generateMatches(week18Teams) },
 ];
  
   // Logos de los equipos
@@ -215,6 +235,7 @@ function getCurrentWeekIndex() {
     new Date("2024-12-11"), // Fecha de inicio de la semana 15
     new Date("2024-12-18"), // Fecha de inicio de la semana 16
     new Date("2024-12-25"), // Fecha de inicio de la semana 17
+    new Date("2025-1-1"), // Fecha de inicio de la semana 18
   ];
 
   // Buscar la semana actual comparando las fechas
@@ -231,86 +252,82 @@ function getCurrentWeekIndex() {
 let currentWeekIndex = getCurrentWeekIndex(); // Calcula el índice de la semana actual
 const weekNumber = document.getElementById('week-number');
 const matchesContainer = document.getElementById('matches-container');
-  
-  function renderMatches() {
-    // Asegúrate de que el contenedor existe
-    if (!matchesContainer) return;
-  
-    // Aplica la clase "fade-out" para iniciar la animación de salida
-    matchesContainer.classList.remove('fade-in'); // Por si tiene la clase de entrada
-    matchesContainer.classList.add('fade-out');
-  
-    // Esperar a que termine la animación de salida antes de actualizar el contenido
-    setTimeout(() => {
-      matchesContainer.innerHTML = ''; // Limpiar el contenido actual
-      const currentWeek = weeks[currentWeekIndex];
-      weekNumber.textContent = currentWeek.week; // Actualizar el número de la semana
-  
-      // Generar el contenido de los partidos
-      currentWeek.matches.forEach(match => {
-        const matchDiv = document.createElement('div');
-        matchDiv.classList.add('score-card');
-  
-        // Estado del partido: live, final, upcoming
-        if (match.status === "Live") {
-          matchDiv.classList.add('live-now');
-        } else if (match.status === "Final") {
-          matchDiv.classList.add('completed');
-        } else if (match.status === "upcoming") {
-          matchDiv.classList.add('upcoming');
-        }
-  
-        // Determinar al ganador o líder
-        const team1IsWinner = match.status === "Final" && match.score1 > match.score2;
-        const team2IsWinner = match.status === "Final" && match.score2 > match.score1;
-        const team1IsLeading = match.status === "Live" && match.score1 > match.score2;
-        const team2IsLeading = match.status === "Live" && match.score2 > match.score1;
+const cache = {}; // Objeto para almacenar el contenido de las semanas
 
-        // Posesión
-        const team1HasPossession = match.possession === match.team1;
-        const team2HasPossession = match.possession === match.team2;
-  
-        // Texto adicional para partidos en vivo
-        const liveStatusHTML = match.status === "Live"
-          ? `<div>Live - ${match.quarter}</div>`
-          : "";
-  
-        // Formatear fecha y hora para partidos futuros
-        const additionalStatusHTML = match.status === "upcoming"
-          ? `
-            <div>
-              <div>${match.startTime} - ${match.startTimeHour}</div>
-            </div>
-          `
-          : match.status;
-  
-        // Crear el contenido dinámico del partido
-        matchDiv.innerHTML = `
-        <div class="match">
-          <div class="team ${team1IsWinner ? 'winner' : ''} ${team1IsLeading ? 'leading' : ''}">
-            <img src="${teamLogos[match.team1]}" alt="${match.team1} logo" class="team-logo">
-            ${match.team1}
-            ${match.status === "Live" && match.possession === 1 ? '<div class="possession"></div>' : ''}
-          </div>
-          <div class="team-score">${match.status === "upcoming" ? "-" : match.score1}</div>
-          <div class="team-score">${match.status === "upcoming" ? "-" : match.score2}</div>
-          <div class="team ${team2IsWinner ? 'winner' : ''} ${team2IsLeading ? 'leading' : ''}">
-            <img src="${teamLogos[match.team2]}" alt="${match.team2} logo" class="team-logo">
-            ${match.team2}
-            ${match.status === "Live" && match.possession === 2 ? '<div class="possession"></div>' : ''}
-          </div>
+function renderMatches() {
+  if (!matchesContainer) return;
+
+  matchesContainer.classList.remove('fade-in');
+  matchesContainer.classList.add('fade-out');
+
+  // Optimización con requestAnimationFrame
+  requestAnimationFrame(() => {
+    matchesContainer.innerHTML = ''; // Limpiar el contenido actual
+    const currentWeek = weeks[currentWeekIndex];
+    weekNumber.textContent = currentWeek.week;
+
+    currentWeek.matches.forEach(match => {
+      const matchDiv = document.createElement('div');
+      matchDiv.classList.add('score-card');
+
+
+      // Estado del partido: live, final, upcoming
+      if (match.status === "Live") {
+        matchDiv.classList.add('live-now');
+      } else if (match.status === "Final") {
+        matchDiv.classList.add('completed');
+      } else if (match.status === "upcoming") {
+        matchDiv.classList.add('upcoming');
+      }
+
+      // Determinar al ganador o líder
+      const team1IsWinner = match.status === "Final" && match.score1 > match.score2;
+      const team2IsWinner = match.status === "Final" && match.score2 > match.score1;
+      const team1IsLeading = match.status === "Live" && match.score1 > match.score2;
+      const team2IsLeading = match.status === "Live" && match.score2 > match.score1;
+
+      // Posesión
+      const team1HasPossession = match.possession === match.team1;
+      const team2HasPossession = match.possession === match.team2;
+
+      // Texto adicional para partidos en vivo
+      const liveStatusHTML = match.status === "Live"
+        ? `<div>Live - ${match.quarter}</div>`
+        : "";
+
+      // Formatear fecha y hora para partidos futuros
+      const additionalStatusHTML = match.status === "upcoming"
+        ? `<div>${match.startTime} - ${match.startTimeHour}</div>`   
+        : match.status;
+
+      // Crear el contenido dinámico del partido
+      matchDiv.innerHTML = `
+      <div class="match">
+        <div class="team ${team1IsWinner ? 'winner' : ''} ${team1IsLeading ? 'leading' : ''}">
+          <img src="${teamLogos[match.team1]}" alt="${match.team1} logo" class="team-logo">
+          ${match.team1}
+          ${match.status === "Live" && match.possession === 1 ? '<div class="possession"></div>' : ''}
         </div>
-        <div class="status">${liveStatusHTML || additionalStatusHTML}</div>
+        <div class="team-score">${match.status === "upcoming" ? "-" : match.score1}</div>
+        <div class="team-score">${match.status === "upcoming" ? "-" : match.score2}</div>
+        <div class="team ${team2IsWinner ? 'winner' : ''} ${team2IsLeading ? 'leading' : ''}">
+          <img src="${teamLogos[match.team2]}" alt="${match.team2} logo" class="team-logo">
+          ${match.team2}
+          ${match.status === "Live" && match.possession === 2 ? '<div class="possession"></div>' : ''}
+        </div>
+      </div>
+      <div class="status">${liveStatusHTML || additionalStatusHTML}</div>
       `;
       
-  matchesContainer.appendChild(matchDiv);
-});
-  
-      // Cambiar a la animación "fade-in" después de actualizar el contenido
-      matchesContainer.classList.remove('fade-out');
-      matchesContainer.classList.add('fade-in');
-    }, 300); // Duración de la animación de salida (300ms)
-  }  
+      matchesContainer.appendChild(matchDiv);
+    });
+
+    // Cambiar a la animación "fade-in" después de actualizar el contenido
+    matchesContainer.classList.remove('fade-out');
+    matchesContainer.classList.add('fade-in');
+  });
+}
+
   
   
   
@@ -341,7 +358,7 @@ const matchesContainer = document.getElementById('matches-container');
     }
   });
   
-
+  
   
   // Renderizar la semana inicial al cargar la página
   renderMatches();
