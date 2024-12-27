@@ -117,9 +117,28 @@
   ["Bills", "Patriots", 24, 21, "Final"],
   ["Raiders", "Jaguars", 19, 14, "Final"],
   ["Dolphins", "49ers", 29, 17, "Final"],
-  ["Cowboys", "Buccaneers", 26, 24, "Final"],
+  ["Cowboys", "Buccaneers", 26, 24, "Final", "Q4 - 2 Minutes", 2],
   ["Packers", "Saints", 0, 0, "upcoming", "Q1", 1, "Tomorrow", "7:15 PM"],
-];
+  ];
+
+  const week17Teams = [
+  ["Steelers", "Chiefs", 10, 29, "Final"],
+  ["Texans", "Ravens", 2, 31, "Final"],
+  ["Bears", "Seahawks", 3, 6, "Final"],
+  ["Patriots", "Chargers", 0, 0, "upcoming", "Q1", 1, "Sat, Dec 28", "12:00 PM"],
+  ["Bengals", "Broncos", 0, 0, "upcoming", "Q1", 1, "Sat, Dec 28", "3:30 PM"],
+  ["Rams", "Cardinals", 0, 0, "upcoming", "Q1", 1, "Sat, Dec 28", "7:10 PM"],
+  ["Eagles", "Cowboys", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "12:00 PM"],
+  ["Buccaneers", "Panthers", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "12:00 PM"],
+  ["Bills", "Jets", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "12:00 PM"],
+  ["Giants", "Colts", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "12:00 PM"],
+  ["Saints", "Raiders", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "12:00 PM"],
+  ["Jaguars", "Titans", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "12:00 PM"],
+  ["Browns", "Dolphins", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "3:05 PM"],
+  ["Vikings", "Packers", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "3:25 PM"],
+  ["Commanders", "Falcons", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "7:20 PM"],
+  ["49ers", "Lions", 0, 0, "upcoming", "Q1", 1, "Mon, Dec 30", "7:15 PM"],
+  ];
 
 // Función para generar partidos personalizados
 function generateMatches(teams) {
@@ -145,6 +164,7 @@ const weeks = [
   { week: 14, matches: generateMatches(week14Teams) },
   { week: 15, matches: generateMatches(week15Teams) },
   { week: 16, matches: generateMatches(week16Teams) },
+  { week: 17, matches: generateMatches(week17Teams) },
 ];
  
   // Logos de los equipos
@@ -194,6 +214,7 @@ function getCurrentWeekIndex() {
     new Date("2024-12-04"), // Fecha de inicio de la semana 14
     new Date("2024-12-11"), // Fecha de inicio de la semana 15
     new Date("2024-12-18"), // Fecha de inicio de la semana 16
+    new Date("2024-12-25"), // Fecha de inicio de la semana 17
   ];
 
   // Buscar la semana actual comparando las fechas
