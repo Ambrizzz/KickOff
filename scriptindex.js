@@ -117,17 +117,17 @@
   ["Bills", "Patriots", 24, 21, "Final"],
   ["Raiders", "Jaguars", 19, 14, "Final"],
   ["Dolphins", "49ers", 29, 17, "Final"],
-  ["Cowboys", "Buccaneers", 26, 24, "Final", "Q4 - 2 Minutes", 2],
-  ["Packers", "Saints", 0, 0, "upcoming", "Q1", 1, "Tomorrow", "7:15 PM"],
+  ["Cowboys", "Buccaneers", 26, 24, "Final"],
+  ["Packers", "Saints", 0, 34, "Final"],
   ];
 
   const week17Teams = [
   ["Steelers", "Chiefs", 10, 29, "Final"],
   ["Texans", "Ravens", 2, 31, "Final"],
   ["Bears", "Seahawks", 3, 10, "Final"],
-  ["Patriots", "Chargers", 0, 0, "upcoming", "Q1", 1, "Sat, Dec 28", "12:00 PM"],
-  ["Bengals", "Broncos", 0, 0, "upcoming", "Q1", 1, "Sat, Dec 28", "3:30 PM"],
-  ["Rams", "Cardinals", 0, 0, "upcoming", "Q1", 1, "Sat, Dec 28", "7:10 PM"],
+  ["Patriots", "Chargers", 0, 0, "upcoming", "Q1", 1, "Tomorrow", "12:00 PM"],
+  ["Bengals", "Broncos", 0, 0, "upcoming", "Q1", 1, "Tomorrow", "3:30 PM"],
+  ["Rams", "Cardinals", 0, 0, "upcoming", "Q1", 1, "Tomorrow", "7:10 PM"],
   ["Eagles", "Cowboys", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "12:00 PM"],
   ["Buccaneers", "Panthers", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "12:00 PM"],
   ["Bills", "Jets", 0, 0, "upcoming", "Q1", 1, "Sun, Dec 29", "12:00 PM"],

@@ -26,6 +26,18 @@ body {
     height: 150px;
 }
 
+/* Encabezados */
+h1, h2, h3 {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 600; /* Texto más grueso para títulos */
+}
+
+/* Texto general */
+p, span, div {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 600; /* Texto más ligero */
+}
+
 /* Division Header */
 .division h2 {
     display: flex;
@@ -117,40 +129,40 @@ td:first-child {
 }
 
 .nav-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #242424;
-    padding: 10px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  .nav-menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .nav-menu ul li {
-    display: inline;
-  }
-  
-  .nav-menu ul li a {
-    text-decoration: none;
-    color: #ddddddd8;
-    padding: 10px 15px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
-  
-  .nav-menu ul li a:hover {
-    background-color: #545454;
-    border-radius: 5px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #242424;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-menu ul li {
+  display: inline;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  color: #ddddddd8;
+  padding: 10px 15px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+  background-color: #545454;
+  border-radius: 5px;
+}
 
   /* Scrollbar principal */
 ::-webkit-scrollbar {
@@ -181,4 +193,34 @@ td:first-child {
     scrollbar-color: #8a8a8a #2a2a2a; /* Color barra y fondo */
     scrollbar-width: thin; /* Ancho más delgado */
   }
-  
+
+  /* Legend Container */
+.legend-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Permite que los elementos bajen si exceden el límite */
+  gap: 20px; /* Espaciado entre elementos */
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #3c3c3c;
+  color: #ddddddd8;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+  max-width: 600px; /* Ancho máximo */
+  margin-left: auto; /* Centrado horizontal */
+  margin-right: auto;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-logo {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+  border-radius: 50%; /* Hace que el logo sea redondeado */
+}
